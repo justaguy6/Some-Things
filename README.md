@@ -6,3 +6,7 @@
  PS: I'd actually appreciate it if you dm me directly about using any of the code, it just makes me less lonely
 
 Credits and such in their respective hx files !!
+
+Credits
+Zack - Full Code
+Jose - Android Support
