@@ -24,14 +24,6 @@ class SysPathing
 		var daPathReal:String = daPath;
 		#if android
 		daPathReal = "/" + daPath;
-		#elseif windows
-		daPathReal = "C:/Users/" + Sys.environment()["USERNAME"] + daPath;
-		#elseif flash
-		daPathReal = "file:///C:/O/" + daPath;
-		#elseif mac
-		// TO DO: ADD AUTO FILE PATH TO MACOS
-		#elseif linux
-		// TO DO: ADD AUTO FILE PATH TO LINUX
 		#end
 		return daPathReal;
 	}
@@ -52,7 +44,7 @@ class SysPathing
 		}
 		else
 		{
-			if (FileSystem.exists(Path.join([Path.directory(Sys.programPath()), addition])))
+			if (Assets.exists(Path.join([Path.directory(Sys.programPath()), addition])))
 			{
 				return Path.join([Path.directory(Sys.programPath()), addition]);
 			}
@@ -74,7 +66,7 @@ class SysPathing
      */
     public static function isPathExisting(file:String):Bool {
         //trace(Path.join([Path.directory(Sys.programPath()), file]));
-		return FileSystem.exists(Path.join([Path.directory(Sys.programPath()), file]));
+		return Assets.exists(Path.join([Path.directory(Sys.programPath()), file]));
 	}
 
 	/**
@@ -91,7 +83,7 @@ class SysPathing
 		}
 		else
 		{
-			if (FileSystem.exists(Path.join([Path.directory(Sys.programPath()), addition])))
+			if (Assets.exists(Path.join([Path.directory(Sys.programPath()), addition])))
 			{
 				return Path.join([Path.directory(Sys.programPath()), addition]);
 			}
@@ -139,8 +131,8 @@ class SysPathing
 			}
 		}
 
-		if (!FileSystem.exists(Path.join([Path.directory(Sys.programPath()), daDir])))
-			FileSystem.createDirectory(Path.join([Path.directory(Sys.programPath()), daDir]));
+		if (!FileSystem.exists(Generic.returnPath() + Path.join([Path.directory(Sys.programPath()), daDir])))
+			FileSystem.createDirectory(Generic.returnPath() + Path.join([Path.directory(Sys.programPath()), daDir]));
 		#end
 	}
 
@@ -184,10 +176,10 @@ class SysPathing
 
 		var path:String = "";
 
-		if (!FileSystem.exists(Path.join([Path.directory(Sys.programPath()), daDir + daExt])))
+		if (!Assets.exists(Path.join([Path.directory(Sys.programPath()), daDir + daExt])))
 		{
             // if (!FileSys)
-			FileSystem.createDirectory(Path.join([Path.directory(Sys.programPath()), daDir]));
+			FileSystem.createDirectory(Generic.returnPath() + Path.join([Path.directory(Sys.programPath()), daDir]));
 
 			File.write(path = Path.join([Path.directory(Sys.programPath()), daDir + daExt]), false);
 		}
