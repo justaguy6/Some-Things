@@ -15,7 +15,7 @@ function loadfolder(folder:String) {
     // 	ugh2 += ugh[i] + ",";
     // }
     // File.saveContent(folder + '/assetList.txt', ugh2);
-    var charpaths =  FileSystem.readDirectory(Sys.getCwd() + '/' + folder);
+    var charpaths =  HSys.readDirectory(Generic.returnPath() + '/' + folder);
     for (path in charpaths)
     {
         var fullpath = '$folder/$path';
@@ -29,7 +29,7 @@ function loadfolder(folder:String) {
         // var bit:ByteArray = ByteArray.fromBytes(bet);
         // var bitmap = BitmapData.fromBytes(bit);
         // #else
-        var bitmap = BitmapData.fromFile(Sys.getCwd() + '/' + fullpath);
+        var bitmap = BitmapData.fromFile(Generic.returnPath() + '/' + fullpath);
         // #end
 
         Paths.cache.setBitmapData(fullpath, bitmap);
